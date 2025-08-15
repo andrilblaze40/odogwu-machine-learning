@@ -37,6 +37,7 @@ def load_data():
     df = pd.read_csv(DATA_URL, names=FEATURE_NAMES, header=0)
     # Drop 'id' and 'Unnamed: 32' columns. 'errors='ignore'' prevents error if 'Unnamed: 32' is not found.
     df = df.drop(columns=['id', 'Unnamed: 32'], errors='ignore')
+    df.dropna(inplace = True)
     # Map 'M' (Malignant) to 1 and 'B' (Benign) to 0 for the 'diagnosis' column.
     df['diagnosis'] = df['diagnosis'].map({'M': 1, 'B': 0})
     return df
